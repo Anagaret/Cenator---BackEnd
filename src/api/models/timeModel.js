@@ -16,7 +16,7 @@ let timeSchema = new Schema({
   },
   timer_stop:{
     type: Boolean,
-    Default: True
+    Default: true
   },
   timer: {
     type: Date
