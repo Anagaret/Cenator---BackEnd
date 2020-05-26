@@ -1,18 +1,26 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let voteSchema = new Schema({
+let timeSchema = new Schema({
   user_id: {
     type: String,
     required: "Veuillez renseigner votre nom d'utilisateur"
   },
-  song_id: {
+  project_id: {
     type: String,
     required: "Quel est le titre de ce morceau ?"
   },
-  vote: {
+  description: {
+    type: String,
+    required: "La desciption est necessaire"
+  },
+  timer_stop:{
     type: Boolean,
+    Default: True
+  },
+  timer: {
+    type: Date
   }
 });
 
-module.exports = mongoose.model('Vote', voteSchema);
+module.exports = mongoose.model('Time', timeSchema);

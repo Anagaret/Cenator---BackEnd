@@ -1,23 +1,10 @@
-const Song = require('../models/songModel');
+const Group = require('../models/groupModel');
 
-exports.list_all_song = (req, res) => {
-  Song.find({}, (error, songs) => {
-    if(error){
-      res.status(500);
-      console.log(error);
-      res.json({message: "Erreur serveur."});
-    }
-    else{
-      res.status(200);
-      res.json(songs);
-    }
-  })
-}
+//Add
+exports.create_a_group = (req, res) => {
+  let new_group = new Group(req.body);
 
-exports.create_a_song = (req, res) => {
-  let new_post = new Song(req.body);
-
-  new_post.save((error, song) => {
+  new_group.save((error, group) => {
     if(error){
       res.status(500);
       console.log(error);
@@ -25,17 +12,14 @@ exports.create_a_song = (req, res) => {
     }
     else{
       res.status(201);
-      res.json(song);
+      res.json(group);
     }
   })
 }
 
-exports.get_a_song = (req, res) => {
-  // let post_id = req.params.post_id;
-  let {song_id} = req.params;
-
-  // Post.findOne({_id : post_id}, (error, posts) => {
-  Song.findById(song_id, (error, song) => {
+//Read All
+exports.list_all_group = (req, res) => {
+  Group.find({}, (error, groups) => {
     if(error){
       res.status(500);
       console.log(error);
@@ -43,47 +27,63 @@ exports.get_a_song = (req, res) => {
     }
     else{
       res.status(200);
-      res.json(song);
+      res.json(groups);
     }
   })
 }
 
+//Read One
+exports.get_a_group = (req, res) => {
+  // let post_id = req.params.post_id;
+  let {group_id} = req.params;
 
-// A modifier lorsque le front sera MAJ
-exports.set_a_song = (req, res) => {
-  let {song_id} = req.params;
-  Song.findOne({_id : song_id}, (erreur, song) => {
+  // Post.findOne({_id : post_id}, (error, posts) => {
+  Group.findById(song_id, (error, group) => {
+    if(error){
+      res.status(500);
+      console.log(error);
+      res.json({message: "Erreur serveur."});
+    }
+    else{
+      res.status(200);
+      res.json(group);
+    }
+  })
+}
+
+//Update One
+exports.set_a_group = (req, res) => {
+  let {group_id} = req.params;
+  Group.findOne({_id : group_id}, (erreur, group) => {
     if (erreur) {
       res.status(500);
       console.log(erreur);
       res.json({message: "Erreur serveur."})
     } else {
-      if (req.params.vote == "plus") {
-        song.vote_plus += 1;
-      } else {
-        song.vote_moins += 1;
-      }
-      song.save();
+      group.save();
       res.status(200);
-      res.json(song);
+      res.json(group);
     }
   })
 }
 
-exports.delete_a_song = (req, res) => {
-  let {song_id} = req.params;
-  Song.remove({ _id : song_id}, (error, song) => {
+//Delete One
+exports.delete_a_group = (req, res) => {
+  let {group_id} = req.params;
+  Group.remove({ _id : group_id}, (error, group) => {
     if (error) {
       res.status(500);
       console.log(error);
       res.json({message: "Erreur serveur."})
     } else {
       res.status(200);
-      res.json(song);
+      res.json(group);
     }
   })
 };
 
+//Voir si utile pour une amélioration
+/*
 exports.get_top_six_song = (req, res) => {
   Song.find({}, (error, song) => {
     if(error){
@@ -99,3 +99,4 @@ exports.get_top_six_song = (req, res) => {
       {vote_plus : -1}
       ).limit(6)
 };
+*/
