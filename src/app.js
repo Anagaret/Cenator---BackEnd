@@ -14,14 +14,14 @@ server.use(bodyParser.json());
 const cors = require('cors');
 server.use(cors());
 
-const songRoute = require('./api/routes/songRoute');
-songRoute(server);
+const groupRoute = require('./api/routes/groupRoute');
+groupRoute(server);
 
-const commentRoute = require('./api/routes/commentRoute');
-commentRoute(server);
+const projectRoute = require('./api/routes/projectRoute');
+projectRoute(server);
 
-const voteRoute = require('./api/routes/voteRoute');
-voteRoute(server);
+const timeRoute = require('./api/routes/timeRoute');
+timeRoute(server);
 
 const userRoute = require('./api/routes/userRoute');
 userRoute(server);
