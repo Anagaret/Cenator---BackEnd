@@ -38,7 +38,7 @@ exports.get_a_group = (req, res) => {
   let {group_id} = req.params;
 
   // Post.findOne({_id : post_id}, (error, posts) => {
-  Group.findById(song_id, (error, group) => {
+  Group.findById(group_id, (error, group) => {
     if(error){
       res.status(500);
       console.log(error);

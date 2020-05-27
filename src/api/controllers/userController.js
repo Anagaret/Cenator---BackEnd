@@ -16,15 +16,21 @@ exports.get_all_user = (req, res) => {
 
 exports.connection = (req, res) => {
   let email = req.params.mail;
-  user.findOne({email : email}, (error, user) => {
+  let pwd = req.params.password;
+  User.findOne({email : email}, (error, user) => {
     if(error){
       res.status(500);
       console.log(error);
       res.json({message: "Erreur serveur."});
     }
     else{
-      res.status(200);
-      res.json(user);
+      if (user.password == pwd) {
+        res.status(200);
+        res.json(user);
+      } else {
+        res.status(500);
+        res.json({message: "Permission denied"});
+      }
     }
   })
 };

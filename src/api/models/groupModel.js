@@ -12,17 +12,14 @@ let groupSchema = new Schema({
   },
   user_id_2: {
     type: String,
-    required: "Veuillez renseigner votre nom d'utilisateur",
     default: null
   },
   user_id_3: {
     type: String,
-    required: "Veuillez renseigner votre nom d'utilisateur",
     default: null
   },
   user_id_4: {
     type: String,
-    required: "Veuillez renseigner votre nom d'utilisateur",
     default: null
   },
   date: {
