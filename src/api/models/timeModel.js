@@ -18,7 +18,10 @@ let timeSchema = new Schema({
     type: Boolean,
     Default: true
   },
-  timer: {
+  start_date: {
+    type: Date
+  },
+  stop_date: {
     type: Date
   }
 });
