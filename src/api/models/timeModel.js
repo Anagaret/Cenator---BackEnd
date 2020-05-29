@@ -4,11 +4,15 @@ const Schema = mongoose.Schema;
 let timeSchema = new Schema({
   user_id: {
     type: String,
-    required: "Veuillez renseigner votre nom d'utilisateur"
+    required: "L'id du user"
   },
   project_id: {
     type: String,
-    required: "Quel est le titre de ce morceau ?"
+    required: "L'id du project"
+  },
+  name:{
+    type: String,
+    required: "Le nom de la tache est necessaire"
   },
   description: {
     type: String,

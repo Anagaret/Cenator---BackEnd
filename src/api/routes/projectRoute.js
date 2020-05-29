@@ -7,6 +7,6 @@ module.exports = (server) => {
 
  server.route('/project/:project_id') // req.params.song_id
  .get(projectController.get_project) // Ok
- .put(projectController.update_project) // A voir
+ .put(projectController.update_project) // Ne fonctionne pas
  .delete(projectController.delete_project); // Ok
 }

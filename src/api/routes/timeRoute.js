@@ -11,6 +11,6 @@ module.exports = (server) => {
   .post(timeController.add_time); // Ok
 
   server.route('/:time_id/update')
-  .put(timeController.update_time) // A voir
+  .put(timeController.update_time) // Ne fonctionne pas
   .delete(timeController.delete_time); // Ok
 }
