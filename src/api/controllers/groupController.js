@@ -38,7 +38,7 @@ exports.get_a_group = (req, res) => {
   let {group_id} = req.params;
 
   // Post.findOne({_id : post_id}, (error, posts) => {
-  Group.findById(song_id, (error, group) => {
+  Group.findById(group_id, (error, group) => {
     if(error){
       res.status(500);
       console.log(error);
@@ -52,9 +52,9 @@ exports.get_a_group = (req, res) => {
 }
 
 //Update One
-exports.set_a_group = (req, res) => {
+exports.update_group = (req, res) => {
   let {group_id} = req.params;
-  Group.findOne({_id : group_id}, (erreur, group) => {
+  Group.update({_id : group_id}, (erreur, group) => {
     if (erreur) {
       res.status(500);
       console.log(erreur);
@@ -82,21 +82,18 @@ exports.delete_a_group = (req, res) => {
   })
 };
 
-//Voir si utile pour une amélioration
-/*
-exports.get_top_six_song = (req, res) => {
-  Song.find({}, (error, song) => {
+//Read All
+exports.get_all_user_group = (req, res) => {
+  let {user_id} = req.params;
+  Group.find({creator_user_id : user_id}, (error, groups) => {
     if(error){
-      res.status(501);
+      res.status(500);
       console.log(error);
       res.json({message: "Erreur serveur."});
     }
     else{
       res.status(200);
-      res.json(song);
+      res.json(groups);
     }
-  }).sort(
-      {vote_plus : -1}
-      ).limit(6)
-};
-*/
+  })
+}
