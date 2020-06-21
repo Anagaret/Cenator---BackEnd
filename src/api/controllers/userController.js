@@ -44,6 +44,21 @@ exports.get_a_user = (req, res) => {
   })
 };
 
+exports.update_user = (req, res) => {
+  let {user_id} = req.params;
+  user.update(user_id, (error, user) => {
+    if(error){
+      res.status(500);
+      console.log(error);
+      res.json({message: "Erreur serveur."});
+    }
+    else{
+      res.status(200);
+      res.json(user);
+    }
+  })
+};
+
 exports.set_password_user = (req, res) => {
   let {user_id} = req.params;
   user.findOne({_id : user_id}, (erreur, user) => {

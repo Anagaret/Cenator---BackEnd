@@ -2,20 +2,21 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let commentSchema = new Schema({
-  name: {
+  title: {
     type: String,
-    required: "Le nom est requis"
+    required: "Le titre est requis"
   },
-  message: {
+  description: {
     type: String,
-    required: "Le message est requis"
+    default: ""
+  },
+  group_id: {
+    type: String,
+    required: "Le group est requis"
   },
   created_at: {
     type: Date,
     default: Date.now
-  },
-  song_id: {
-    type: String
   }
 });
 
